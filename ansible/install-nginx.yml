@@ -1,0 +1,33 @@
+---
+- name: 在所有 Web 服务器安装和启动 Nginx
+  hosts: web_servers
+  become: yes
+  tasks:
+    - name: 更新 apt 缓存
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: 安装 Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: 确保 Nginx 正在运行
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: 创建网站目录
+      file:
+        path: /data/myweb
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0755'
+
+    - name: 写入测试首页
+      copy:
+        content: "<meta charset='utf-8'><h1>欢迎！这是 {{ inventory_hostname }} 的网站</h1>"
+        dest: /data/myweb/index.html
