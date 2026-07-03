@@ -17,20 +17,15 @@
 
 ## 🗂️ 项目结构
 
-​```
-linux-ops-practice/
-├── scripts/          # Shell 脚本（自动备份等）
-│   └── backup.sh
-├── nginx/            # Nginx 配置与站点文件
-│   └── index.html
-├── ansible/          # Ansible 自动化
-│   ├── inventory.ini
-│   ├── install-nginx.yml
-│   └── deploy-backup.yml
-└── README.md
-​```
-
----
+- **scripts/** — Shell 脚本
+  - `backup.sh` 网站自动备份脚本
+- **nginx/** — Nginx 站点文件
+  - `index.html` 测试首页
+- **ansible/** — Ansible 自动化
+  - `inventory.ini` 主机清单
+  - `install-nginx.yml` 批量装 Nginx
+  - `deploy-backup.yml` 批量部署备份
+- **README.md** — 项目说明
 
 ## 🛠️ 技术栈
 
